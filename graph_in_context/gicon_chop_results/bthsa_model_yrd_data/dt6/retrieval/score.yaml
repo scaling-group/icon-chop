@@ -1,0 +1,95 @@
+score: 1.064727119052273
+pm25_score: 1.1546631988282927
+o3_score: 1.0274552273224222
+summary: query_year_direct_score=1.064727; samples=8754; delta_t=6h; baseline_pollutant_rmse=21.723207;
+  chain_pollutant_rmse=20.402605; success_rate=100.00%
+baseline_pollutant_rmse: 21.72320661898573
+chain_pollutant_rmse: 20.402604789781098
+baseline_pm25_rmse: 17.658348366261436
+chain_pm25_rmse: 15.293072806148528
+baseline_o3_rmse: 25.139175493492935
+chain_o3_rmse: 24.46741699782515
+success_rate: 1.0
+failure_count: 0
+per_sample_metric_summary:
+  count: 8754
+  std_ddof: 0
+  metrics:
+    score:
+      mean: 1.1244224000488778
+      std: 0.29523237339655395
+    rel_l2_score:
+      mean: 1.1541007705293294
+      std: 0.3272196009562571
+    baseline_rel_l2:
+      mean: 0.7182123866413102
+      std: 0.36548004979976445
+    chain_rel_l2:
+      mean: 0.6434133377344077
+      std: 0.3229388810225636
+    baseline_norm_mse:
+      mean: 1.121941506016641
+      std: 0.6536455016230546
+    chain_norm_mse:
+      mean: 1.1136318973657309
+      std: 0.6530311364088534
+    baseline_pollutant_norm_mse:
+      mean: 0.3333916151770581
+      std: 0.33549523166369594
+    chain_pollutant_norm_mse:
+      mean: 0.2793791672820853
+      std: 0.30655295170159014
+    baseline_pollutant_rmse:
+      mean: 20.289388718549482
+      std: 7.761340773611854
+    chain_pollutant_rmse:
+      mean: 18.85989359183918
+      std: 7.782717931745811
+    baseline_pollutant_mae:
+      mean: 15.937911447880609
+      std: 6.252488660955114
+    chain_pollutant_mae:
+      mean: 14.350416672537527
+      std: 6.0102988114915386
+    pm25_score:
+      mean: 1.2477247062534444
+      std: 0.4860499027350662
+    baseline_pm25_rmse:
+      mean: 15.073380224149686
+      std: 9.198395133765661
+    chain_pm25_rmse:
+      mean: 12.835216657358789
+      std: 8.314763352864793
+    baseline_pm25_mae:
+      mean: 12.637067405361003
+      std: 8.073035836045053
+    chain_pm25_mae:
+      mean: 10.331064420092833
+      std: 7.046683446066704
+    baseline_pm25_bias:
+      mean: 6.861784279504433
+      std: 10.52185677535807
+    chain_pm25_bias:
+      mean: 2.778652556594976
+      std: 8.684879933627931
+    o3_score:
+      mean: 1.0810989652962681
+      std: 0.29975658718767806
+    baseline_o3_rmse:
+      mean: 23.07939423274471
+      std: 9.965927333733068
+    chain_o3_rmse:
+      mean: 22.30995810982406
+      std: 10.045907770556479
+    baseline_o3_mae:
+      mean: 19.238755528066754
+      std: 8.860829804655772
+    chain_o3_mae:
+      mean: 18.369768930674418
+      std: 8.825309752361878
+    baseline_o3_bias:
+      mean: 0.6648238682515359
+      std: 16.048372137040612
+    chain_o3_bias:
+      mean: -0.5856922123862262
+      std: 14.754817432868293

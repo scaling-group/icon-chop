@@ -1,0 +1,16 @@
+# Runtime outputs
+results/
+*.log
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Local data and checkpoints
+data/
+checkpoints/
+
+# Local cache/scratch artifacts
+cache/
+tmp/
+*.tmp

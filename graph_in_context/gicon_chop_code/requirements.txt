@@ -1,0 +1,14 @@
+torch
+hydra-core
+omegaconf
+numpy
+pandas
+xarray
+netCDF4
+scipy
+geopy
+metpy
+pint
+einops
+transformers
+bresenham

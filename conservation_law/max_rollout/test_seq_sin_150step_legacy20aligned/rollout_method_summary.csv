@@ -1,0 +1,3 @@
+dataset,method,num_predictions,combined_score,mean_rel_l2,mean_raw_icon_rel_l2,mean_mse,mean_l1,win_rate_vs_raw_icon,mean_relative_improve_vs_raw_icon
+test_seq_sin_150step_legacy20aligned,raw_icon,72000,1.0,1.0668761604126,1.0668761604126,0.134028181897073,0.26017478446856773,1.0,0.0
+test_seq_sin_150step_legacy20aligned,icon_chop,72000,6.117999989534067,0.17438315826049075,1.0668761604126,0.007887276699532524,0.04086925399652844,0.90375,0.5926118411373343

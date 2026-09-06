@@ -1,0 +1,186 @@
+CONFIG
+├── data
+│   └── num_workers: 4                                                          
+│       pin_memory: true                                                        
+│       train_enable_device_seed: true                                          
+│       valid_enable_device_seed: true                                          
+│       test_enable_device_seed: true                                           
+│       train_base_seed: 12                                                     
+│       valid_base_seed: 42                                                     
+│       test_base_seed: 22                                                      
+│       sampling_mode: cycle                                                    
+│       train:                                                                  
+│         mfc_all:                                                              
+│           name: mfc_all                                                       
+│           weight: 1.0                                                         
+│           dataset:                                                            
+│             _target_: src.datasets.mfc.mfc_icon.MfcIconDataset                
+│             file_paths: /scratch/e1719797/code/scaling-icon-core/data//mfc/tra
+│             demo_num: 5                                                       
+│             max_len: 100                                                      
+│             k_dim: 2                                                          
+│             base_seed: null                                                   
+│           num_workers: 4                                                      
+│           pin_memory: true                                                    
+│           batch_size_per_device: 16                                           
+│           enable_device_seed: true                                            
+│           base_seed: 12                                                       
+│       valid:                                                                  
+│         gparam_forward11:                                                     
+│           name: mfc_gparam_forward11                                          
+│           dataset:                                                            
+│             _target_: src.datasets.mfc.mfc_icon.MfcIconDataset                
+│             file_paths: /scratch/e1719797/code/scaling-icon-core/data//mfc/val
+│             demo_num: 5                                                       
+│             max_len: 100                                                      
+│             k_dim: 2                                                          
+│             base_seed: 42                                                     
+│           num_workers: 4                                                      
+│           pin_memory: true                                                    
+│           batch_size_per_device: 16                                           
+│           enable_device_seed: true                                            
+│           base_seed: 42                                                       
+│       test: {}                                                                
+│       data_folder: /scratch/e1719797/code/scaling-icon-core/data//mfc         
+│       demo_num: 5                                                             
+│       k_dim: 2                                                                
+│       train_max_len: 100                                                      
+│       eval_max_len: 100                                                       
+│       batch_size_per_device: 16                                               
+│                                                                               
+├── model
+│   └── _target_: src.models.icon.icon.ICON                                     
+│       shot_num_min: 1                                                         
+│       data_mask: false                                                        
+│       pre_projection:                                                         
+│         _target_: torch.nn.Linear                                             
+│         in_features: 3                                                        
+│         out_features: 256                                                     
+│       function_pe:                                                            
+│         _target_: torch.nn.Embedding                                          
+│         num_embeddings: 100                                                   
+│         embedding_dim: 256                                                    
+│       transformer:                                                            
+│         _target_: src.models.base.transformer.TransformerEncoder              
+│         layer:                                                                
+│           _target_: src.models.base.transformer.TransformerEncoderLayer       
+│           d_model: 256                                                        
+│           nhead: 8                                                            
+│           dim_feedforward: 1024                                               
+│           dropout: 0.0                                                        
+│         num_layers: 6                                                         
+│       post_projection:                                                        
+│         _target_: torch.nn.Linear                                             
+│         in_features: 256                                                      
+│         out_features: 1                                                       
+│                                                                               
+├── callbacks
+│   └── model_summary:                                                          
+│         _target_: lightning.pytorch.callbacks.RichModelSummary                
+│         max_depth: 100                                                        
+│       print_model:                                                            
+│         _target_: src.callbacks.print_model.PrintModel                        
+│       save_ckpt:                                                              
+│         _target_: lightning.pytorch.callbacks.ModelCheckpoint                 
+│         dirpath: /scratch/e1719797/code/scaling-icon-core/logs/train/runs/2026
+│         filename: step_{step}                                                 
+│         monitor: null                                                         
+│         verbose: true                                                         
+│         save_last: link                                                       
+│         save_top_k: -1                                                        
+│         mode: min                                                             
+│         auto_insert_metric_name: false                                        
+│         save_weights_only: false                                              
+│         every_n_train_steps: 1000                                             
+│         train_time_interval: null                                             
+│         every_n_epochs: null                                                  
+│         save_on_train_epoch_end: null                                         
+│                                                                               
+├── logger
+│   └── csv:                                                                    
+│         _target_: lightning.pytorch.loggers.csv_logs.CSVLogger                
+│         save_dir: /scratch/e1719797/code/scaling-icon-core/logs/train/runs/202
+│         name: csv/                                                            
+│         prefix: ''                                                            
+│                                                                               
+├── trainer
+│   └── _target_: lightning.pytorch.trainer.Trainer                             
+│       default_root_dir: /scratch/e1719797/code/scaling-icon-core/logs/train/ru
+│       min_steps: 1                                                            
+│       min_epochs: 0                                                           
+│       max_steps: 200000                                                       
+│       max_epochs: -1                                                          
+│       accelerator: gpu                                                        
+│       devices: 1                                                              
+│       precision: '32'                                                         
+│       deterministic: false                                                    
+│       val_check_interval: 10000                                               
+│       check_val_every_n_epoch: null                                           
+│       limit_val_batches: 0                                                    
+│       gradient_clip_val: 1.0                                                  
+│       profiler: simple                                                        
+│                                                                               
+├── paths
+│   └── root_dir: /scratch/e1719797/code/scaling-icon-core                      
+│       data_dir: /scratch/e1719797/code/scaling-icon-core/data/                
+│       log_dir: /scratch/e1719797/code/scaling-icon-core/logs/                 
+│       output_dir: /scratch/e1719797/code/scaling-icon-core/logs/train/runs/202
+│       work_dir: /scratch/e1719797/code/scaling-icon-core                      
+│       restore_ckpts: null                                                     
+│       restore_dir: null                                                       
+│                                                                               
+├── extras
+│   └── rich_console_width: 200                                                 
+│       ignore_warnings: false                                                  
+│       enforce_tags: true                                                      
+│       print_config: true                                                      
+│                                                                               
+├── plmodule
+│   └── _target_: src.plmodules.icon_lit_module.IconLitModule                   
+│       _partial_: true                                                         
+│                                                                               
+├── datamodule
+│   └── _target_: src.datamodules.base_datamodule.BaseDataModule                
+│       _partial_: true                                                         
+│                                                                               
+├── loss
+│   └── shot_num_min: 1                                                         
+│                                                                               
+├── opt
+│   └── optimizer:                                                              
+│         _target_: torch.optim.AdamW                                           
+│         _partial_: true                                                       
+│         lr: 0.0001                                                            
+│       scheduler:                                                              
+│         _target_: src.opt.schedulers.warmup_cosine_decay_scheduler.PercentageW
+│         _partial_: true                                                       
+│         max_iters: 200000                                                     
+│         warmup_percent: 10                                                    
+│         decay_percent: 100                                                    
+│         end_lr_factor: 0.1                                                    
+│       gnorm_clip: 1.0                                                         
+│                                                                               
+├── accelerate
+│   └── fp32_matmul_precision: highest                                          
+│       dynamo_cache_size_limit: null                                           
+│       compile: false                                                          
+│       precision: '32'                                                         
+│       sdpa:                                                                   
+│       - efficient                                                             
+│       - flash                                                                 
+│       - math                                                                  
+│                                                                               
+├── task_name
+│   └── train                                                                   
+├── tags
+│   └── ['icon', 'mfc']                                                         
+├── train
+│   └── True                                                                    
+├── test
+│   └── False                                                                   
+├── seed
+│   └── 42                                                                      
+├── print_lv
+│   └── 1                                                                       
+└── log_project
+    └── icon_mfc                                                                

@@ -1,0 +1,35 @@
+.venv/
+.pytest_cache/
+.ruff_cache/
+.pyright/
+dist/
+build/
+*.egg-info/
+.coverage
+htmlcov/
+__pycache__/
+*.py[cod]
+runs/
+.runs/
+artifacts/
+/storage/
+.tmp/
+.env
+.env.*
+.experiment-claude-config/
+*.o*
+/wandb/
+
+probes/
+
+results/
+#scripts/escher_env.sh
+scripts/escher_env.local.sh
+
+# Superpowers specs/plans (not for public git history)
+docs/superpowers/
+
+# Stream-json probe fixtures (large JSONL, local testing only)
+tests/fixtures/stream_json_probes/
+
+references/

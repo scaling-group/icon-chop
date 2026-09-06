@@ -1,0 +1,56 @@
+# Python bytecode and tool caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.pyright/
+.cache/
+.ipynb_checkpoints/
+
+# Virtual environments
+.venv/
+venv/
+env/
+.tox/
+.nox/
+
+# Build and packaging output
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Test coverage output
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# Local environment settings (keep shareable templates)
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+
+# Runtime logs and temporary files
+*.log
+*.tmp
+*.swp
+*.swo
+*~
+.tmp/
+tmp/
+
+# Keep the configuration shipped with the MFC checkpoint
+!/ckpt/mean_field/config_tree.log
+
+# OS and editor metadata
+.DS_Store
+._*
+Thumbs.db
+.idea/
+
+# Checkpoints, saved experiment results, prompt examples, and uv.lock
+# are repository assets and are intentionally not ignored.
